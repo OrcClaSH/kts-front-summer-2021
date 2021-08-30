@@ -15,8 +15,6 @@ export default class ApiStore implements IApiStore {
             method: params.method,
             headers: { ...params.headers }
         };
-        // let body = null;
-        // const headers = { ...params.headers };
 
         if (params.method === HTTPMethod.GET) {
             endpoint = `${endpoint}?${qs.stringify(params.data)}`
@@ -24,7 +22,6 @@ export default class ApiStore implements IApiStore {
 
         if (params.method === HTTPMethod.POST) {
             req.body = JSON.stringify(params.data);
-            // req.headers = { ...params.headers };
             req.headers = {
                 ...req.headers,
                 'Content-Type': 'application/json;charset=UTF-8'
@@ -35,9 +32,6 @@ export default class ApiStore implements IApiStore {
     }
 
     async request<SuccessT, ErrorT = any, ReqT = {}>(params: RequestParams<ReqT>): Promise<ApiResponse<SuccessT, ErrorT>> {
-        // const [endpoint, req] = this.getRequestData(params);
-
-        // fetch(endpoint, req);
         try {
             const response = await fetch(...this.getRequestData(params));
 
@@ -65,7 +59,3 @@ export default class ApiStore implements IApiStore {
         // TODO: Напишите здесь код, который с помощью fetch будет делать запрос
     }
 }
-
-
-
-//34:30

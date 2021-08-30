@@ -22,6 +22,11 @@ export type RequestParams<ReqT> = {
 // Перечисление статусов ответа
 export enum StatusHTTP {
     // TODO: заполнить
+    Ok = 200,
+    Created = 201,
+    NoContent = 204,
+    NotFound = 404,
+    BadGateway = 502,
     UNEXPECTED_ERROR = 'UNEXPECTED_ERROR'
 }
 
